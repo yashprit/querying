@@ -1,6 +1,6 @@
 {
   "name": "querying",
-  "version": "0.0.0-alpha",
+  "version": "0.0.0-beta",
   "description": "A simple querybuilder for database, supporting arcgis http rest interface",
   "bugs": {
     "url": "https://github.com/yashprit/querying/issues"
@@ -30,7 +30,7 @@
     "sql"
   ],
   "dependencies": {
-		"underscore": "^1.8.2"
+    "underscore": "^1.8.2"
   },
   "devDependencies": {
     "chai": "^2.1.0",
