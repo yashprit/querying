@@ -13,29 +13,20 @@ $ npm install --save querying
 ## Usage
 
 ```js
-var querying = require('querying');
+var QueryBuilder = require('querying');
 
-querying('Rainbow');
+var queryBuilder = new QueryBuilder();
+queryBuilder.where('USER_ID').is(1234).build(); 
+# {where: "USER_ID: '1234'"}
 ```
-
-```sh
-$ npm install --global querying
-$ querying --help
-```
-
-```sh
-# creates a browser.js
-$ npm run browser
-```
-
 
 ##Report Issue 
-(Report Issue)[issue-url]
+[issue-url]
 
 
 ## License
 
-MIT © [Yashprit](yashprit.github.io)
+MIT © [Yashprit](https://yashprit.github.io)
 
 [issue-url]: https://github.com/yashprit/querying/issues
 [npm-url]: https://npmjs.org/package/querying
