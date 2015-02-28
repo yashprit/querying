@@ -1,0 +1,53 @@
+{
+  "name": "querying",
+  "version": "0.0.0",
+  "description": "A simple querybuilder for database, supporting arcgis http rest interface",
+  "bugs": {
+    "url": "/querying/issues"
+  },
+  "author": {
+    "url": "yashprit.github.io",
+    "name": "Yashprit",
+    "email": "yashprit@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "user/repo"
+  },
+  "license": "MIT",
+  "files": [
+    "index.js",
+    "cli.js"
+  ],
+  "keywords": [
+    "querying",
+    "query",
+    "builder",
+    "arcgis",
+    "database",
+    "http",
+    "rest",
+    "sql"
+  ],
+  "dependencies": {
+    "meow": "^2.0.0",
+		"underscore": "^1.8.2"
+  },
+  "devDependencies": {
+    "browserify": "^7.0.0",
+    "chai": "^2.1.0",
+    "gulp": "^3.8.11",
+    "gulp-cli": "^0.1.5",
+    "gulp-jshint": "^1.9.2",
+    "gulp-mocha": "^2.0.0",
+    "gulp-watch": "^4.1.1",
+    "jshint-stylish": "^1.0.0"
+  },
+  "scripts": {
+    "test": "gulp test",
+    "browser": "browserify index.js > browser.js"
+  },
+  "bin": {
+    "querying": "cli.js"
+  }
+}
