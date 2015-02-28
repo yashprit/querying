@@ -30,11 +30,9 @@
     "sql"
   ],
   "dependencies": {
-    "meow": "^2.0.0",
 		"underscore": "^1.8.2"
   },
   "devDependencies": {
-    "browserify": "^7.0.0",
     "chai": "^2.1.0",
     "gulp": "^3.8.11",
     "gulp-cli": "^0.1.5",
