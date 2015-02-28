@@ -1,9 +1,9 @@
 {
   "name": "querying",
-  "version": "0.0.0",
+  "version": "0.0.0-alpha",
   "description": "A simple querybuilder for database, supporting arcgis http rest interface",
   "bugs": {
-    "url": "/querying/issues"
+    "url": "https://github.com/yashprit/querying/issues"
   },
   "author": {
     "url": "yashprit.github.io",
@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "user/repo"
+    "url": "https://github.com/yashprit/querying"
   },
   "license": "MIT",
   "files": [
