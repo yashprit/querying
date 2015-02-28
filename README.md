@@ -37,10 +37,10 @@ $ npm run browser
 
 MIT © [Yashprit](yashprit.github.io)
 
-[issue-url]: https://github.com//querying/issues
+[issue-url]: https://github.com/yashprit/querying/issues
 [npm-url]: https://npmjs.org/package/querying
 [npm-image]: https://badge.fury.io/js/querying.svg
-[travis-url]: https://travis-ci.org//querying
-[travis-image]: https://travis-ci.org//querying.svg?branch=master
-[daviddm-url]: https://david-dm.org//querying.svg?theme=shields.io
-[daviddm-image]: https://david-dm.org//querying
+[travis-url]: https://travis-ci.org/yashprit/querying
+[travis-image]: https://travis-ci.org/yashprit/querying.svg?branch=master
+[daviddm-url]: https://david-dm.org/yashprit/querying.svg?theme=shields.io
+[daviddm-image]: https://david-dm.org/yashprit/querying
