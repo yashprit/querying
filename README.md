@@ -16,8 +16,7 @@ $ npm install --save querying
 var QueryBuilder = require('querying');
 
 var queryBuilder = new QueryBuilder();
-queryBuilder.where('USER_ID').is(1234).build(); 
-# {where: "USER_ID: '1234'"}
+queryBuilder.where('USER_ID').is(1234).build();//where: "USER_ID: '1234'"} 
 ```
 
 ##Report Issue 
