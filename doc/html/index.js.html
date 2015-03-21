@@ -1,4 +1,31 @@
-/*
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: index.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: index.js</h1>
+
+    
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/*
  *                       _           
   __ _ _  _ ___ _ _ _  _(_)_ _  __ _ 
  / _` | || / -_) '_| || | | ' \/ _` |
@@ -10,35 +37,16 @@
 
 var _ = require("underscore");
 
-/**
- * @constructor
- * 
- * A constructor for query object
- * it holds claues for query
- */
 function Query() {
   this.where;
   this.outFields;
   this.orderByFields;
-  this.returnCountOnly;
 }
-/**
- * toString returns query string
- * 
- * .toString()
- *  
- * @return {String} returns query string
- */
+
 Query.prototype.toString = function toString() {
   return JSON.stringify(this);
 }
-/**
- * toJSON returns query object 
- * 
- * .toJSON()
- * 
- * @return {Object} 
- */
+
 Query.prototype.toJSON = function toString() {
   var temp = {};
   if (this.where) temp.where = this.where;
@@ -48,11 +56,9 @@ Query.prototype.toJSON = function toString() {
   temp.f = 'json';
   return temp;
 }
+
 /**
- * QueryBuilder
- * 
- * @constructor
- * 
+ * #QueryBuilder
  * A constructor for a query builder object.
  * contains various temporary attribute for budilding query
  */
@@ -70,22 +76,26 @@ function QueryBuilder() {
   this._returnCountOnly = false;
   this._query = new Query();
 }
-
+/**
+ * [WHAT description]
+ * @type {String}
+ */
+var WHAT = "x"
 /**
  * operators 
  * @type {Object}
  */
 QueryBuilder.Operators = {
   EQUAL: "=",
-  NOT_EQUAL: "<>",
+  NOT_EQUAL: "&lt;>",
   ASC: "ASC",
   DESC: "DESC",
   AND: "AND",
   OR: "OR",
   GREATER: '>',
-  LESS: '<',
+  LESS: '&lt;',
   GREATER_EQUAL: '>=',
-  LESS_EQUAL: '<=',
+  LESS_EQUAL: '&lt;=',
   IS_NULL: 'IS NULL',
   IS_NO_NULL: 'IS NOT NULL',
   IN: 'IN'
@@ -155,15 +165,15 @@ QueryBuilder.prototype._wrapQuotes = function _wrapQuotes(value) {
  * @return {QueryBuilder} queryBuilder
  */
 QueryBuilder.prototype.where = function where(key, value, operator) {
-  if (value && !operator) {
+  if (value &amp;&amp; !operator) {
     throw new TypeError("Missing no of arguments");
   }
 
-  if (this._cols.length && this._cols.length !== this._conjunction.length) {
+  if (this._cols.length &amp;&amp; this._cols.length !== this._conjunction.length) {
     throw new TypeError("Invalid query");
   }
 
-  if (key && value && operator) {
+  if (key &amp;&amp; value &amp;&amp; operator) {
     value = "'" + value + "'";
     this._cols.push(key);
     this._value.push(value);
@@ -197,7 +207,7 @@ QueryBuilder.prototype.is = function is(value) {
 
 
 /**
- * Set operator as '<>' and
+ * Set operator as '&lt;>' and
  * takes value of previously set col by where
  *
  * .isNot(value)
@@ -330,7 +340,7 @@ QueryBuilder.prototype.isNull = function isNull(value) {
  * @return {QueryBuilder} queryBuilder
  */
 QueryBuilder.prototype.and = function and(key, value, operator) {
-  if (!(this._cols.length && this._value.length && this._cols.length === this._value.length)) {
+  if (!(this._cols.length &amp;&amp; this._value.length &amp;&amp; this._cols.length === this._value.length)) {
     throw new TypeError("Invalid query")
   }
   this._conjunction.push(QueryBuilder.Operators.AND);
@@ -354,7 +364,7 @@ QueryBuilder.prototype.and = function and(key, value, operator) {
  * @return {QueryBuilder} queryBuilder
  */
 QueryBuilder.prototype.or = function or(key, value, operator) {
-  if (!(this._cols.length && this._value.length && this._cols.length === this._value.length)) {
+  if (!(this._cols.length &amp;&amp; this._value.length &amp;&amp; this._cols.length === this._value.length)) {
     throw new TypeError("Invalid query")
   }
   this._conjunction.push(QueryBuilder.Operators.OR);
@@ -414,7 +424,7 @@ QueryBuilder.prototype.in = function valueIn(value) {
   if (!value) {
     throw new TypeError("Missing arguments");
   }
-  if (_.isObject(value) && !_.isArray(value)) {
+  if (_.isObject(value) &amp;&amp; !_.isArray(value)) {
     throw new TypeError("Invalid input");
   }
   if(_.isArray(value)) {
@@ -449,7 +459,7 @@ QueryBuilder.prototype.outFields = function outFields(outFields) {
     throw new TypeError("Only String allowed");
   }
 
-  if (_.isString(outFields) && outFields.match(/(,)/)) {
+  if (_.isString(outFields) &amp;&amp; outFields.match(/(,)/)) {
     outFields = outFields.split(",");
   }
 
@@ -477,7 +487,7 @@ QueryBuilder.prototype.build = function build() {
   }, []);
 
   if (this._conjunction.length) {
-    for (var i = 0; i < this._conjunction.length; i++) {
+    for (var i = 0; i &lt; this._conjunction.length; i++) {
       var value = this._wrapSpace(this._conjunction[i]);
       if (joinedArray.length >= 2) {
         var firstArray = joinedArray.splice(0, 2);
@@ -511,3 +521,26 @@ QueryBuilder.prototype.build = function build() {
 };
 
 module.exports = QueryBuilder;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Index</a></h2>
+</nav>
+
+<br clear="both">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha5</a> on Sat Mar 21 2015 17:45:46 GMT+0530 (IST)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
