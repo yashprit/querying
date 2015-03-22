@@ -36,19 +36,46 @@ Sets operator as "<>", argument as value, takes key from preceding where
 sets greater than (">") operator for given value and key taken from preceding where
 
 ### lessThan(value)
-sets less than ("<") operator for given value and key taken from preceding where
+Sets less than ("<") operator for given value and key taken from preceding where
+
+### grtThanAndEqual(value)
+Sets less than (">=") operator for given value and key taken from preceding where
+
+### lessThanAndEqual(value)
+Sets less than ("<=") operator for given value and key taken from preceding where
 
 ### isNull()
-sets "IS NULL" operator for key taken from preceding where
+Sets "IS NULL" operator for key taken from preceding where
 
 ### isNotNull()
-sets "IS NOT NULL" operator for key taken from preceding where
+Sets "IS NOT NULL" operator for key taken from preceding where
 
-### and() 
-set conjuction 'AND' 
+### and(key, [value, operator]) 
+Set conjuction 'AND' and Sets next attribute for query 
 ```js
-queryBuilder.where('USER_ID').is(1234).and('ORG_ID').is(25).build();//where: "USER_ID = '1234' AND ORG_ID = '25' "} 
+queryBuilder.where('USER_ID').is(1234).and('ORG_ID').is(25).build();
+// where: "USER_ID = '1234' AND ORG_ID = '25' "} 
 ```
+
+### or(key, [value, operator])
+Set conjuction 'OR', and sets next attribute for query
+
+### ASC(key)
+Sets ORDER BY clause, argument key as column name for ORDER BY, sorting in ascending order
+```js
+queryBuilder.where('USER_ID').is(1234).ASC('ORG_ID').build();
+//{
+// where: 'USER_ID = "1234"',
+// orderByFields: 'ORG_ID ASC'
+//}
+```
+
+### DESC(key)
+Sets ORDER BY clause, argument key as column name for ORDER BY, sorting in descending order
+
+### in(values)
+Sets IN operator with argument values
+
 ##Report Issue 
 [issue-url]
 
