@@ -75,6 +75,29 @@ Sets ORDER BY clause, argument key as column name for ORDER BY, sorting in desce
 
 ### in(values)
 Sets IN operator with argument values
+```js
+queryBuilder.where('USER_ID').in([1234, 233,544]).build();
+//{
+// where: 'USER_ID IN (1234, 233, 544)'
+//}
+```
+
+### outfields(columnNames)
+Sets select statement with argument columnNames
+
+### returnCountOnly()
+Sets returnCountOnly key to true, so that result will be count of record set
+
+
+### build()
+Creates an Object containing all clauses and returns Query object
+
+
+## Methods for Query
+
+### toString()
+returns stringify query object
+
 
 ##Report Issue 
 [issue-url]
