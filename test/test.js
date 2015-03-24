@@ -345,15 +345,4 @@ describe("Testing QueryBuilder Class", function() {
     });
   });
 
-  describe("#Query.stringify()", function() {
-    it("Should set _returnCountOnly false, if method is not used", function() {
-      var query = queryBuilder.where("FIELD_ID").is("12345").or("USER_ID").is("123").build();
-      expect(query.stringify()).to.false;
-    });
-    it("Should set _returnCountOnly true, if method is used", function() {
-      queryBuilder.returnCountOnly();
-      expect(queryBuilder._returnCountOnly).to.true;
-    });
-  })
-
 });
