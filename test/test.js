@@ -8,7 +8,7 @@ describe("Testing QueryBuilder Class", function() {
   var queryBuilder;
 
   beforeEach(function() {
-    queryBuilder = new QueryBuilder();
+    queryBuilder = QueryBuilder();
   });
 
   afterEach(function() {
@@ -269,7 +269,7 @@ describe("Testing QueryBuilder Class", function() {
     });
 
     it("Should not generate statement without preceding where", function() {
-      expect(queryBuilder.in.bind(queryBuilder, [12, 23, 34])).to.throw("No key found for value (12,23,34)");
+      expect(queryBuilder.in.bind(queryBuilder, [12, 23, 34])).to.throw("No key found for value (\'12\',\'23\',\'34\')");
     });
 
     it("Should generate statement based on key", function() {
@@ -318,16 +318,31 @@ describe("Testing QueryBuilder Class", function() {
       expect(_(queryBuilder._cols).last()).to.equal("ROLE");
     });
 
-    it("Should match 1 conjuctions length ", function() {
+    it("Should match 1 conjunctions length ", function() {
       queryBuilder.where("FIELD_ID").is("12345").or("USER_ID").is("123");
       expect(_(queryBuilder._conjunction.length).value()).to.equal(1);
     });
 
-    it("Should match 2 conjuctions length ", function() {
-      queryBuilder.where("FIELD_ID").is("12345").or("USER_ID").is("123").and("USER_ID").is("123");
+    it("Should match 2 conjunctions length ", function() {
+      queryBuilder.where("FIELD_ID").is("12345").or("USER_ID").is("123").or("USER_ID").is("123");
       expect(_(queryBuilder._conjunction.length).value()).to.equal(2);
     });
 
+    it("Should generate query with OR conjunction", function() {
+      queryBuilder.where("FIELD_ID").is("12345").or("USER_ID").is("123");
+      expect(_(queryBuilder._conjunction).last()).to.equal(QueryBuilder.Operators.OR);
+    });
+
+  });
+
+  describe("#QueryBuilder.returnCountOnly()", function() {
+    it("Should set _returnCountOnly false, if method is not used", function() {
+      expect(queryBuilder._returnCountOnly).to.false;
+    });
+    it("Should set _returnCountOnly true, if method is used", function() {
+      queryBuilder.returnCountOnly();
+      expect(queryBuilder._returnCountOnly).to.true;
+    });
   });
 
 });
