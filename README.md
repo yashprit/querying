@@ -1,4 +1,10 @@
-#  [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-url]][daviddm-image]
+#  querying [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-url]][daviddm-image]
+                             _
+      __ _ _  _ ___ _ _ _  _(_)_ _  __ _
+     / _` | || / -_) '_| || | | ' \/ _` |
+     \__, |\_,_\___|_|  \_, |_|_||_\__, |
+        |_|             |__/       |___/ Yet Another Query Builder
+
 
 > A simple querybuilder for database, supporting arcgis http rest interface
 
@@ -16,7 +22,7 @@ $ npm install --save querying
 var QueryBuilder = require('querying');
 
 var queryBuilder = QueryBuilder();
-queryBuilder.where('USER_ID').is(1234).build();//where: "USER_ID: '1234'"} 
+queryBuilder.where('USER_ID').is(1234).build();//where: {"USER_ID: '1234'"}
 ```
 
 
@@ -27,59 +33,61 @@ queryBuilder.where('USER_ID').is(1234).build();//where: "USER_ID: '1234'"}
 Sets an attribute for building query or Sets attribute, value and operator if provided as argument
 
 ### is(value)
-Sets "=" as operator, and argument as value, takes key from preceding where
+Sets `=` as operator, and argument as value, takes key from preceding where
 
 ### isNot(value)
-Sets operator as "<>", argument as value, takes key from preceding where
+Sets operator as `<>`, argument as value, takes key from preceding where
 
 ### grtThan(value)
-sets greater than (">") operator for given value and key taken from preceding where
+sets greater than `>` operator for given value and key taken from preceding where
 
 ### lessThan(value)
-Sets less than ("<") operator for given value and key taken from preceding where
+Sets less than `<` operator for given value and key taken from preceding where
 
 ### grtThanAndEqual(value)
-Sets less than (">=") operator for given value and key taken from preceding where
+Sets less than `>=` operator for given value and key taken from preceding where
 
 ### lessThanAndEqual(value)
-Sets less than ("<=") operator for given value and key taken from preceding where
+Sets less than `<=` operator for given value and key taken from preceding where
 
 ### isNull()
-Sets "IS NULL" operator for key taken from preceding where
+Sets `IS NULL` operator for key taken from preceding where
 
 ### isNotNull()
-Sets "IS NOT NULL" operator for key taken from preceding where
+Sets `IS NOT NULL` operator for key taken from preceding where
 
-### and(key, [value, operator]) 
-Set conjuction 'AND' and Sets next attribute for query 
+### and(key, [value, operator])
+Set conjuction `AND` and Sets next attribute for query
 ```js
 queryBuilder.where('USER_ID').is(1234).and('ORG_ID').is(25).build();
-// where: "USER_ID = '1234' AND ORG_ID = '25' "} 
+// { where: "USER_ID = '1234' AND ORG_ID = '25' "}
 ```
 
 ### or(key, [value, operator])
-Set conjuction 'OR', and sets next attribute for query
+Set conjuction `OR`, and sets next attribute for query
 
 ### ASC(key)
-Sets ORDER BY clause, argument key as column name for ORDER BY, sorting in ascending order
+Sets `ORDER BY` clause, argument key as column name for `ORDER BY`, sorting in ascending order
+
 ```js
 queryBuilder.where('USER_ID').is(1234).ASC('ORG_ID').build();
-//{
-// where: 'USER_ID = "1234"',
-// orderByFields: 'ORG_ID ASC'
-//}
+/* => {
+ where: 'USER_ID = "1234"',
+ orderByFields: 'ORG_ID ASC'
+} */
 ```
 
 ### DESC(key)
-Sets ORDER BY clause, argument key as column name for ORDER BY, sorting in descending order
+Sets `ORDER BY` clause, argument key as column name for `ORDER BY`, sorting in descending order
 
 ### in(values)
-Sets IN operator with argument values
+Sets `IN` operator with argument values
+
 ```js
 queryBuilder.where('USER_ID').in([1234, 233,544]).build();
-//{
-// where: 'USER_ID IN (1234, 233, 544)'
-//}
+/* => {
+  where: 'USER_ID IN (1234, 233, 544)'
+} */
 ```
 
 ### outfields(columnNames)
@@ -99,8 +107,13 @@ Creates an Object containing all clauses and returns Query object
 returns stringify query object
 
 
-##Report Issue 
-[issue-url]
+## Run Test
+```sh
+npm test
+```
+
+## Contribute or Report Issue
+For bugs and feature requests, [please create an issue][issue-url].
 
 
 ## License
